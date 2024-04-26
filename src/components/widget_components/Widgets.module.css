@@ -1,0 +1,73 @@
+/* Bars Widget */
+
+.bars_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 300px;
+	height: 170px;
+	overflow: hidden;
+}
+
+.bar {
+	height: 45px;
+	background: red;
+	border-radius: 3px;
+}
+
+/* Checkers Widget */
+
+.checkers_container {
+	display: flex;
+	flex-wrap: wrap;
+	width: 260px;
+}
+
+.checkers_container div:nth-child(even) {
+	background: var(--secondary-color);
+}
+
+.checker {
+	width: 50px;
+	height: 50px;
+	border-radius: 3px;
+}
+
+/* Donut Widget */
+
+.donut_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 200px;
+}
+
+/* Track Widget */
+
+.track_container {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+.outer_line {
+	stroke: var(--secondary-color);
+}
+
+.inner_line {
+	stroke: var(--tertiary-color);
+}
+
+.ball {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 30px;
+	height: 30px;
+	border: solid 3px;
+	border-radius: 50%;
+	background: var(--accent-color);
+	offset-path: path(
+		"M37 38L243.921 37.1589C265.478 37.0712 283 54.5221 283 76.0793V76.0793C283 97.5746 265.575 115 244.079 115H76C54.4609 115 37 132.461 37 154V154C37 175.539 54.4609 193 76 193H283"
+	);
+}

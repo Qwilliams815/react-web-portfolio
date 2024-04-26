@@ -1,0 +1,46 @@
+.about_content {
+	height: inherit;
+}
+
+.text_wrapper {
+	width: 70%;
+}
+
+.about_text {
+	background-color: rgba(255, 255, 255, 0.6);
+	line-height: 1.5;
+}
+
+.headshot {
+	position: absolute;
+	right: 0;
+	top: 100px;
+	z-index: -1;
+	width: auto;
+}
+
+.headshot_mobile {
+	display: none;
+}
+
+@media only screen and (max-width: 600px) {
+	.text_wrapper {
+		width: 100%;
+	}
+
+	.headshot_mobile {
+		position: static;
+		right: 0;
+		top: 100px;
+		z-index: -1;
+	}
+
+	.headshot {
+		display: none;
+	}
+
+	.headshot_mobile {
+		padding-top: 20px;
+		display: block;
+	}
+}
