@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	z-index: 1;
-	max-width: 100%;
+	/* max-width: 100%; */
 	max-width: 600px;
 	height: 100%;
 	margin: 0;
@@ -28,6 +28,11 @@
 	outline: none;
 }
 
+.input_honeypot {
+	display: none;
+	visibility: hidden;
+}
+
 .form > textarea {
 	height: 200px;
 	margin-bottom: 1rem;
@@ -43,7 +48,14 @@
 	outline: none;
 }
 
-.form > input[type="submit"] {
+.footer_wrapper {
+	display: flex;
+	justify-content: space-between;
+	/* align-items: center; */
+	flex-wrap: wrap;
+}
+
+.footer_wrapper > input[type="submit"] {
 	width: 240px;
 	height: 90px;
 	padding: 0;
@@ -58,16 +70,18 @@
 	letter-spacing: 2px;
 }
 
-.form > p {
-	margin-left: 0;
-	padding-left: 0;
-	text-align: left;
+.footer_wrapper > h2 {
+	font-size: 1.7rem;
+	margin-top: 25px;
+	line-height: 1;
 }
 
 @media only screen and (max-width: 600px) {
 	.form {
 		justify-content: center;
 		align-items: center;
+		padding: 0;
+		width: 95%;
 	}
 
 	.form > input {

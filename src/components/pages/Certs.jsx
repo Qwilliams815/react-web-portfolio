@@ -30,7 +30,7 @@ export default function Certs() {
 				<div className={CertsCSS.container}>
 					{certs.map((cert) => (
 						<div className={CertsCSS.tilt_wrapper} key={cert.alt}>
-							<a href={cert.link} target="_blank">
+							<a href={cert.link} target="_blank" tabIndex="-1">
 								<Tilty reverse={false} speed={1000} scale={1.1}>
 									<img src={cert.src} alt={cert.alt} className={CertsCSS.cert_img} />
 								</Tilty>

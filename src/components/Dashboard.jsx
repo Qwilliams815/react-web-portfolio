@@ -17,6 +17,8 @@ import resumeLogo from "../assets/icons/file-solid.svg";
 export default function Dashboard() {
 	const textRef = useRef(null);
 	const { size } = useResizeText(textRef);
+	const portraitScreenSize = window.matchMedia("(orientation: portrait)");
+	const mobileScreenSize = window.matchMedia("(max-width: 400px)");
 
 	return (
 		<div className={DashboardCSS.grid}>
@@ -46,8 +48,8 @@ export default function Dashboard() {
 				expandable
 				expanded={false}
 				fadeInDelay={1}
-				xStart={0}
-				yStart={-100}
+				xStart={mobileScreenSize.matches ? 100 : 0}
+				yStart={mobileScreenSize.matches ? 0 : -100}
 			>
 				<Skills className={DashboardCSS.content} />
 			</GridItem>
@@ -57,7 +59,7 @@ export default function Dashboard() {
 				expandable
 				expanded={false}
 				fadeInDelay={1.4}
-				xStart={100}
+				xStart={portraitScreenSize.matches ? -100 : 100}
 				yStart={0}
 			>
 				<About />
@@ -68,7 +70,7 @@ export default function Dashboard() {
 				expandable
 				expanded={false}
 				fadeInDelay={2.2}
-				xStart={-100}
+				xStart={portraitScreenSize.matches ? 100 : -100}
 				yStart={0}
 			>
 				<Certs />
@@ -102,10 +104,7 @@ export default function Dashboard() {
 				xStart={0}
 				yStart={100}
 			>
-				<a
-					href="https://brianandwilliams.com/resources/Resume%20(Brian%20Williams).pdf"
-					target="_blank"
-				>
+				<a href="public/Resume (Brian Williams).pdf" target="_blank">
 					<img src={resumeLogo} alt="resume icon" />
 				</a>
 			</GridItem>

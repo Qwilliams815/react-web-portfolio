@@ -7,7 +7,7 @@ export default function Contact() {
 	const [open, setOpen] = useState(false);
 	const btnRef = useRef(null);
 
-	const handleClick = () => {
+	const handleClose = () => {
 		setOpen(!open);
 		btnRef.current.classList.add(ContactCSS.disable);
 		// This is to disable the hover effect animation on the contact button while the expanding animation is happening
@@ -19,7 +19,7 @@ export default function Contact() {
 	return (
 		<motion.div
 			className={`${ContactCSS.wrapper}`}
-			transition={{ type: "spring", stiffness: 80, duration: 3 }}
+			transition={{ type: "spring", stiffness: 40, duration: 0.5 }}
 			initial={{ y: "103%" }}
 			animate={{
 				y: open ? "-15px" : "103%",
@@ -36,7 +36,7 @@ export default function Contact() {
 				{open && (
 					<div className={ContactCSS.close_wrapper} onClick={() => setOpen(false)}></div>
 				)}
-				<motion.div className={ContactCSS.contact_button} onClick={handleClick}>
+				<motion.div className={ContactCSS.contact_button} onClick={handleClose}>
 					<h1 className={ContactCSS.btn_label}>contact</h1>
 					<svg
 						width="430"
@@ -61,7 +61,7 @@ export default function Contact() {
 					<div className={ContactCSS.number_decal} aria-hidden="true">
 						97
 					</div>
-					<ContactForm isOpen={open} />
+					<ContactForm isOpen={open} handleClose={handleClose} />
 				</div>
 			</motion.div>
 		</motion.div>

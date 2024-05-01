@@ -17,6 +17,7 @@
 	overflow: hidden;
 	box-shadow: 5px 5px 1rem rgb(72, 72, 72, 0.5);
 	cursor: pointer;
+	-webkit-backdrop-filter: blur(2px); /* Safari */
 	backdrop-filter: blur(2px);
 }
 
@@ -96,6 +97,20 @@
 			height: 25px;
 			width: 25px;
 			margin: 8px;
+		}
+	}
+
+	@media only screen and (max-width: 400px) {
+		.expand {
+			grid-row: 1 / 13;
+			scale: 1.05;
+			width: 100% !important;
+			height: 110% !important;
+		}
+
+		.content_padding > h2 {
+			pointer-events: none;
+			font-size: 2rem;
 		}
 	}
 }
