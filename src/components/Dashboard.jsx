@@ -12,6 +12,7 @@ import GlitchText from "./fx_components/GlitchText";
 import githubLogo from "../assets/icons/github.svg";
 import linkedinLogo from "../assets/icons/linkedin.svg";
 import resumeLogo from "../assets/icons/file-solid.svg";
+import resume from "/public/Resume.pdf";
 
 // DESC: Renders the main dashboard hub for the site.
 export default function Dashboard() {
@@ -104,7 +105,7 @@ export default function Dashboard() {
 				xStart={0}
 				yStart={100}
 			>
-				<a href="public/Resume (Brian Williams).pdf" target="_blank">
+				<a href={resume} target="_blank">
 					<img src={resumeLogo} alt="resume icon" />
 				</a>
 			</GridItem>

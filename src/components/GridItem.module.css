@@ -54,6 +54,9 @@
 	width: 100%;
 	height: 100%;
 	scale: 4;
+	transform: translate3d(0, 0, 0);
+	-webkit-backdrop-filter: blur(0px); /* Safari */
+	backdrop-filter: blur(0px);
 }
 
 /* THIS STYLE IS IMPORTED AND USED IN EACH GRID ITEM PAGE COMPONENT */
@@ -76,7 +79,6 @@
 	height: 100% !important;
 	background: var(--primary-color);
 	overflow-y: scroll;
-	/* pointer-events: none; */
 	cursor: default;
 }
 
@@ -104,8 +106,6 @@
 		.expand {
 			grid-row: 1 / 13;
 			scale: 1.05;
-			width: 100% !important;
-			height: 110% !important;
 		}
 
 		.content_padding > h2 {

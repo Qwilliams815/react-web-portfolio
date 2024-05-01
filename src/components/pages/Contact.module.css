@@ -31,6 +31,7 @@
 	position: relative;
 	width: inherit;
 	height: 75vh;
+	max-height: 800px;
 	border: solid 20px var(--accent-color);
 	border-radius: 3px;
 	background: var(--primary-color);
