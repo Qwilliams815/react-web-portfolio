@@ -5,85 +5,128 @@ import closeX from "../assets/icons/close_x.png";
 
 // DESC: Buidling block component for the varaious Dashboard pages.
 export default function GridItem(props) {
-	const { className, children, fadeInDelay, xStart, yStart } = props;
+	const { className, title, children, expandable, page, fadeInDelay } = props;
 	const [tilt, setTilt] = useState(null);
-	const [expanded, setExpanded] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const tilts = [1, -1];
-
-	// Used to enable and disable hover effects when a grid item is expanded.
-	const expandedHover = { scale: 1, rotate: 0 };
-	const minHover = { scale: 0.95, rotate: tilt };
-
+	const [isHovered, setHovered] = useState(false);
+	const [delay, setDelay] = useState(fadeInDelay);
+	const [type, setType] = useState(null);
 	const gridItemRef = useRef(null);
+	const modalRef = useRef(null);
+
+	// Framer Motion Settings
+	const variants = {
+		initial: {
+			opacity: 0,
+			scale: 1.1,
+			filter: "blur(0px)",
+		},
+		animate: {
+			opacity: 1,
+			scale: 1,
+			filter: "blur(0px)",
+			transition: {
+				scale: { type: type, delay: delay }, // optional type: "spring"
+				opacity: { duration: 0.6, delay: delay },
+			},
+		},
+		hovering: {
+			scale: 0.95,
+			rotate: tilt,
+			transition: { type: "spring" },
+			transitionEnd: { scale: 0 },
+		},
+	};
+
+	const resetDelay = (e) => {
+		setDelay(0);
+		setType("spring");
+		return;
+	};
 
 	const handleHoverStart = () => {
 		let tiltDecider = Math.floor(Math.random() * 2);
 		setTilt(tilts[tiltDecider]);
+		setHovered(true);
 	};
 
-	const handleOnClickOpen = () => {
-		if (!gridItemRef.current) return;
+	const launchModal = () => {
+		if (!modalRef.current) return;
 
 		if (props.expandable) {
-			setExpanded(true);
-			gridItemRef.current.classList.add(GridItemCSS.expand);
-
-			window.addEventListener("click", (e) => {
-				if (e.target != gridItemRef.current) {
-				}
-			});
+			// setExpanded(true);
+			setIsModalOpen(true);
+			modalRef.current.classList.add(GridItemCSS.show_modal);
 		}
 	};
 
-	const handleOnClickClose = () => {
+	const closeModal = () => {
 		if (!gridItemRef.current) return;
-
-		gridItemRef.current.classList.remove(GridItemCSS.expand);
-		setExpanded(false);
-		gridItemRef.current.style = { rotate: 0 };
-		gridItemRef.current.scrollTop = 0;
+		modalRef.current.classList.remove(GridItemCSS.show_modal);
+		setIsModalOpen(false);
 	};
 
 	return (
 		<>
-			{/* Blurs background when a grid item is expanded. */}
-			{expanded && (
-				<motion.div
-					className={GridItemCSS.blur_wrapper}
-					onClick={handleOnClickClose}
-					animate={{ backdropFilter: "blur(.5px)" }}
-				></motion.div>
-			)}
-
+			{/* MODAL */}
 			<motion.div
-				className={`${GridItemCSS.grid_item} ${className}`}
-				ref={gridItemRef}
-				onHoverStart={handleHoverStart}
-				whileHover={expanded ? expandedHover : minHover}
-				whileTap={{ scale: 0.9 }}
-				onClick={handleOnClickOpen}
-				initial={{ opacity: 0, x: xStart, y: yStart, filter: "blur(1.3px)" }}
-				animate={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)" }}
-				transition={{
-					scale: { type: "spring" },
-					opacity: { duration: 1.3, delay: fadeInDelay },
-					filter: { duration: 1.3, delay: fadeInDelay },
-					x: { duration: 1.3, delay: fadeInDelay },
-					y: { duration: 1.3, delay: fadeInDelay },
-				}}
-				isOpen={expanded}
+				className={GridItemCSS.modal_wrapper}
+				ref={modalRef}
+				onClick={() => closeModal()}
+				initial={{ backdropFilter: "blur(0px)" }}
+				animate={isModalOpen ? { backdropFilter: "blur(2.3px)" } : {}}
+				transition={{ duration: 0.5, type: "spring" }}
 			>
-				{/* Renders a closing "X" icon when a grid item is expanded. */}
-				{expanded && (
+				<motion.div
+					className={GridItemCSS.modal}
+					initial={{ display: "none", scale: 0.9 }}
+					animate={isModalOpen ? { display: "block", scale: 1 } : {}}
+					transition={{ duration: 0.35, type: "spring", stiffness: 100 }}
+					onClick={(e) => e.stopPropagation()}
+				>
 					<motion.img
 						src={closeX}
 						alt="close"
 						className={GridItemCSS.close_x}
 						whileHover={{ scale: 1.2 }}
-						onMouseUp={handleOnClickClose}
+						onMouseUp={closeModal}
 					/>
+					{page}
+				</motion.div>
+			</motion.div>
+
+			{/* GRID ITEM CARD */}
+			<motion.div
+				className={`${GridItemCSS.grid_item} ${className}`}
+				ref={gridItemRef}
+				onClick={() => launchModal(page)}
+				onHoverStart={handleHoverStart}
+				variants={variants}
+				whileHover={{
+					scale: 0.95,
+					rotate: tilt,
+					transition: { type: "spring", delay: 0 },
+				}}
+				whileTap={{ scale: 0.9 }}
+				onHoverEnd={() => setHovered(false)}
+				initial={"initial"}
+				animate={"animate"}
+				onAnimationComplete={(e) => resetDelay(e)}
+			>
+				{expandable && (
+					<div style={{ padding: "1rem" }}>
+						<span>
+							<h2 className={GridItemCSS.title}>{title}</h2>
+						</span>
+					</div>
 				)}
-				{!expanded && <div className={GridItemCSS.fade_wrapper}></div>}
+				<motion.div
+					className={GridItemCSS.background}
+					initial={{ top: "110%" }}
+					animate={{ top: isHovered ? 0 : "110%" }}
+					transition={{ duration: 0.3, ease: "easeInOut" }}
+				></motion.div>
 				{children}
 			</motion.div>
 		</>

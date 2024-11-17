@@ -44,11 +44,11 @@
 }
 
 .desc_wrapper {
+	position: relative;
 	padding-bottom: 30px;
 }
 
 .card_content > h1 {
-	z-index: 1;
 	font-weight: 300 !important;
 }
 

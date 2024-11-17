@@ -35,6 +35,6 @@ export default function GlitchText({ label }) {
 
 		return () => clearInterval(interval); // Cleanup function to clear the interval when the component unmounts
 	}, [label]);
-
+	// console.log(glitchLabel);
 	return glitchLabel;
 }

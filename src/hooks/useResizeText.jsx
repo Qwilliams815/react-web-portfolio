@@ -7,9 +7,9 @@ export default function useResizeText(textRef) {
 		const handleResize = () => {
 			if (textRef.current) {
 				const textWidth = textRef.current.offsetWidth;
-				let multiplier = 0.37;
+				let multiplier = 0.33;
 				if (window.innerWidth > window.innerHeight) {
-					multiplier = 0.43;
+					multiplier = 0.34;
 				}
 				let newSize = textWidth * multiplier;
 				setSize(newSize);

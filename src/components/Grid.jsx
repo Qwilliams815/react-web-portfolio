@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import GridCSS from "./Grid.module.css";
 import { motion } from "framer-motion";
-import WidgetBars from "./widget_components/WidgetBars";
-import WidgetCheckers from "./widget_components/WidgetCheckers";
-import WidgetDonut from "./widget_components/WidgetDonut";
-import WidgetSwitch from "./widget_components/WidgetTrack";
+import {
+	WidgetBars,
+	WidgetCheckers,
+	WidgetDonut,
+	WidgetTrack,
+} from "./widget_components";
 
 // DESC: Renders a grid of tiles based on the current window size.
 export default function Grid() {
@@ -48,7 +50,7 @@ export default function Grid() {
 		>
 			<div className={`${GridCSS.left_widget_container} ${GridCSS.widget_container}`}>
 				<WidgetBars />
-				<WidgetSwitch />
+				<WidgetTrack />
 			</div>
 			<div className={GridCSS.top_chevron}></div>
 			<div

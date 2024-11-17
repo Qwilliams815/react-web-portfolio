@@ -49,7 +49,7 @@ export default function ContactForm(props) {
 				placeholder="/name"
 				required
 				whileFocus={{ boxShadow: "-7px 7px var(--secondary-color)", x: 7, y: -7 }}
-				transition={{ type: "spring", duration: 0.1, stiffness: 250 }}
+				transition={{ type: "easeOut", duration: 0.2, stiffness: 100 }}
 				tabIndex={isOpen ? "0" : "-1"}
 			/>
 			<motion.input
@@ -58,7 +58,7 @@ export default function ContactForm(props) {
 				placeholder="/email"
 				required
 				whileFocus={{ boxShadow: "-7px 7px var(--secondary-color)", x: 7, y: -7 }}
-				transition={{ type: "spring", duration: 0.1, stiffness: 250 }}
+				transition={{ type: "easeOut", duration: 0.2, stiffness: 100 }}
 				tabIndex={isOpen ? "0" : "-1"}
 			/>
 			<input
@@ -73,13 +73,13 @@ export default function ContactForm(props) {
 				placeholder="/message"
 				required
 				whileFocus={{ boxShadow: "-7px 7px var(--secondary-color)", x: 7, y: -7 }}
-				transition={{ type: "spring", duration: 0.1, stiffness: 250 }}
+				transition={{ type: "easeOut", duration: 0.2, stiffness: 100 }}
 				tabIndex={isOpen ? "0" : "-1"}
 			/>
 			<div className={ContactFormCSS.footer_wrapper}>
 				<motion.input
 					type="submit"
-					value="submit"
+					value="SUBMIT"
 					disabled={isSubmitting}
 					initial={{ boxShadow: "0 10px 5px rgba(0, 0, 0, 0.2)" }}
 					whileHover={{ y: -5, boxShadow: "0 15px 20px rgba(0, 0, 0, 0.2)" }}

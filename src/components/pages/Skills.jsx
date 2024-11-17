@@ -36,8 +36,11 @@ export default function Skills() {
 	useEffect(() => {
 		const handleMouseMove = (event) => {
 			setLabelPosition({
-				x: event.clientX - skillsWindowRef.current?.getBoundingClientRect().x + 5,
-				y: event.clientY - skillsWindowRef.current?.getBoundingClientRect().y + 5,
+				// x: event.clientX,
+				// y: event.clientY,
+				// If parent container has scolling, use these:
+				x: event.clientX - skillsWindowRef.current?.getBoundingClientRect().x + 35,
+				y: event.clientY - skillsWindowRef.current?.getBoundingClientRect().y + 25,
 			});
 		};
 
@@ -67,7 +70,11 @@ export default function Skills() {
 	});
 
 	return (
-		<div className={`${GridItemCSS.content_padding}`} ref={skillsWindowRef}>
+		<div
+			className={`${GridItemCSS.content_padding}`}
+			ref={skillsWindowRef}
+			style={{ height: "auto" }}
+		>
 			<h2>/skills</h2>
 			{isHovered && (
 				<h2

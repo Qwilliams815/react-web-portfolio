@@ -9,16 +9,16 @@ import CS50Cert from "/src/assets/images/CS50_Cert.webp";
 export default function Certs() {
 	const certs = [
 		{
-			src: FCCAlgoCert,
-			alt: "freeCodeCamp Javascript Algorithms and Data Structures Certification",
-			link:
-				"https://www.freecodecamp.org/certification/Qwilliams/javascript-algorithms-and-data-structures",
-		},
-		{
 			src: CS50Cert,
 			alt: "Harvard CS50 Certificate",
 			link:
 				"https://certificates.cs50.io/e8b98181-c1f8-405a-96f6-9fa6c869e0d9.pdf?size=letter",
+		},
+		{
+			src: FCCAlgoCert,
+			alt: "freeCodeCamp Javascript Algorithms and Data Structures Certification",
+			link:
+				"https://www.freecodecamp.org/certification/Qwilliams/javascript-algorithms-and-data-structures",
 		},
 	];
 

@@ -1,29 +1,58 @@
-/* Individual grid item background blur */
-.glass_back {
-	position: absolute;
-	top: 0;
-	z-index: -2;
-	width: 100%;
-	height: 100%;
-	backdrop-filter: blur(2px);
-}
-
 .grid_item {
-	position: absolute;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 	width: 100%;
 	height: 100%;
-	border: solid var(--secondary-color);
+	border: solid 2px var(--secondary-color);
 	border-radius: 3px;
 	overflow: hidden;
-	box-shadow: 5px 5px 1rem rgb(72, 72, 72, 0.5);
+	box-shadow: 0px 5px 10px rgb(84, 84, 84, 0.5);
 	cursor: pointer;
-	-webkit-backdrop-filter: blur(2px); /* Safari */
-	backdrop-filter: blur(2px);
+	/* Safari */
+	-webkit-backdrop-filter: blur(1px);
+	backdrop-filter: blur(1px);
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
+.grid_item > img {
+	z-index: -1;
+}
+
+.modal_wrapper {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	padding: 5rem;
+	user-select: none;
+	display: none;
+}
+
+.modal {
+	height: 100%;
+	width: 100%;
+	max-width: 1000px;
+	border-radius: 3px;
+	background: var(--primary-color);
+	z-index: 2;
+	border: solid 2px var(--secondary-color);
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding: 2rem;
+	margin: auto;
+	box-shadow: 15px 15px 3rem rgba(72, 72, 72, 0.2);
+	position: relative;
+}
+
+.show_modal {
+	display: block;
 }
 
 .close_x {
 	position: sticky;
-	right: 0;
 	z-index: 3;
 	width: 50px;
 	height: 50px;
@@ -32,31 +61,12 @@
 	cursor: pointer;
 }
 
-/* Indvidual grid item "thumbnail" content fade */
-.fade_wrapper {
-	z-index: 1;
-	position: absolute;
+.background {
 	height: 100%;
 	width: 100%;
-	background: linear-gradient(
-		to bottom,
-		rgba(255, 255, 255, 0),
-		rgba(255, 255, 255, 0),
-		rgba(255, 255, 255, 0.1),
-		rgba(255, 255, 255, 0.889)
-	);
-}
-
-/* Whole background blur when a grid item is expanded */
-.blur_wrapper {
 	position: absolute;
-	z-index: 1;
-	width: 100%;
-	height: 100%;
-	scale: 4;
-	transform: translate3d(0, 0, 0);
-	-webkit-backdrop-filter: blur(0px); /* Safari */
-	backdrop-filter: blur(0px);
+	z-index: -1;
+	background: #ff3232;
 }
 
 /* THIS STYLE IS IMPORTED AND USED IN EACH GRID ITEM PAGE COMPONENT */
@@ -70,18 +80,6 @@
 	pointer-events: none;
 }
 
-.expand {
-	grid-column: 1 / 10;
-	grid-row: 1 / 8;
-	left: 0;
-	z-index: 1;
-	width: 100% !important;
-	height: 100% !important;
-	background: var(--primary-color);
-	overflow-y: scroll;
-	cursor: default;
-}
-
 @media (orientation: portrait) {
 	.expand {
 		grid-column: 1 / 7;
@@ -90,9 +88,18 @@
 		z-index: 1;
 	}
 
+	.modal {
+		max-height: 100vh;
+		overscroll-behavior: contain;
+	}
+
 	@media only screen and (max-width: 600px) {
 		.content_padding {
 			padding: 0.3rem;
+		}
+
+		.modal_wrapper {
+			padding: 2.5rem;
 		}
 
 		.close_x {
@@ -103,14 +110,39 @@
 	}
 
 	@media only screen and (max-width: 400px) {
-		.expand {
-			grid-row: 1 / 13;
-			scale: 1.05;
+		.grid_item {
+			display: flex;
+			justify-content: center;
+			backdrop-filter: none;
+		}
+
+		.title {
+			margin-bottom: 0;
+			margin-left: 33%;
+			font-size: clamp(1rem, 8vw, 2rem);
+		}
+
+		.modal_wrapper {
+			padding: 0rem;
+		}
+
+		.modal {
+			padding: 2.25rem;
+			height: inherit;
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 
 		.content_padding > h2 {
-			pointer-events: none;
 			font-size: 2rem;
+		}
+	}
+
+	@media only screen and (max-width: 400px) {
+		.modal {
+			padding: 1rem;
+			padding-top: 2.5rem;
 		}
 	}
 }

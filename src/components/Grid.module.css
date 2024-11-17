@@ -22,7 +22,6 @@
 
 .tile {
 	background: var(--primary-color);
-
 	z-index: -1;
 	border: solid 1px lightgrey;
 	overflow: hidden;

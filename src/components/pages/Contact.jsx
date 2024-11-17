@@ -31,13 +31,13 @@ export default function Contact() {
 				className={ContactCSS.container}
 				initial={{ y: 100 }}
 				animate={{ y: 0 }}
-				transition={{ delay: 4.2, duration: 1.3, type: "spring" }}
+				transition={{ duration: 1.3, type: "spring" }}
 			>
 				{open && (
 					<div className={ContactCSS.close_wrapper} onClick={() => setOpen(false)}></div>
 				)}
 				<motion.div className={ContactCSS.contact_button} onClick={handleClose}>
-					<h1 className={ContactCSS.btn_label}>contact</h1>
+					<h1 className={ContactCSS.btn_label}>CONTACT</h1>
 					<svg
 						width="430"
 						height="135"

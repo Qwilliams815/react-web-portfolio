@@ -13,13 +13,14 @@ export default function Projects(props) {
 		{
 			title: "Chrome Extension",
 			desc:
-				"A Chrome extension compilation of 6 togglable popup widgets, each with their own unique ability to read/manipulate the current webpage DOM.",
+				"A Chrome extension compilation of 6 togglable popup widgets, each with their own unique ability to read/manipulate the current webpage DOM. ",
 			project_img: ChromeExtImg,
 			repo_url: "https://github.com/Qwilliams815/WebAccessibilityChromeExt",
 			demo_url: "https://www.youtube.com/watch?v=PoLH6ATrkCc",
+			tags: ["chrome", "extension"],
 		},
 		{
-			title: "Python GUI",
+			title: ".exe Boot Tool",
 			desc:
 				'GUI window allowing you to save and load multiple .exe files to custom profiles. For example; loading Discord, OBS, and Steam might be saved to a "Gaming" profile.',
 			project_img: BootToolImg,

@@ -1,125 +1,188 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import DashboardCSS from "./Dashboard.module.css";
-import useResizeText from "../hooks/useResizeText";
-import About from "./pages/About";
-import Skills from "./pages/Skills";
-import Certs from "./pages/Certs";
-import Projects from "./pages/Projects";
+import { About, Skills, Certs, Projects } from "./pages";
 import GridItem from "./GridItem";
 import GlitchText from "./fx_components/GlitchText";
+import ContainerFitText from "../hooks/ContainerFitText";
+import useResizeText from "../hooks/useResizeText";
+import { Route, Routes, Link } from "react-router-dom";
 
-import githubLogo from "../assets/icons/github.svg";
-import linkedinLogo from "../assets/icons/linkedin.svg";
-import resumeLogo from "../assets/icons/file-solid.svg";
 import resume from "/public/Resume.pdf";
+import {
+	githubLogo,
+	linkedinLogo,
+	resumeLogo,
+	ribbon,
+	profile,
+	projects,
+} from "../assets/icons";
 
 // DESC: Renders the main dashboard hub for the site.
-export default function Dashboard() {
+const Dashboard = () => {
+	// const firstNameTextRef = useRef(null);
+	// const firstNameContainerRef = useRef(null);
+	// const lastNameTextRef = useRef(null);
+	// const lastNameContainerRef = useRef(null);
 	const textRef = useRef(null);
+	const gridWrapper = useRef(null);
+	// const mobileScreenSize = window.matchMedia("(max-width: 400px)");
+
+	// ContainerFitText(firstNameTextRef, firstNameContainerRef);
+	// ContainerFitText(lastNameTextRef, lastNameContainerRef);
 	const { size } = useResizeText(textRef);
-	const portraitScreenSize = window.matchMedia("(orientation: portrait)");
-	const mobileScreenSize = window.matchMedia("(max-width: 400px)");
 
 	return (
-		<div className={DashboardCSS.grid}>
-			<div id="grid-first-name" className={DashboardCSS.grid_first_name}>
+		<motion.div className={DashboardCSS.grid} ref={gridWrapper}>
+			<motion.div
+				className={`${DashboardCSS.grid_first_name} ${DashboardCSS.name_container}`}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				// transition={{ opacity: { delay: .2 } }}
+			>
+				{/* FIRST NAME */}
 				<h1 className={DashboardCSS.name} ref={textRef} style={{ fontSize: size }}>
-					<GlitchText label="BRIAN" />
+					{size && <GlitchText label="BRIAN" />}
 				</h1>
-			</div>
-
-			<div id="grid-last-name" className={DashboardCSS.grid_last_name}>
+			</motion.div>
+			<div
+				className={`${DashboardCSS.grid_last_name} ${DashboardCSS.name_container}`}
+			>
+				{/* LAST NAME */}
 				<h1 className={DashboardCSS.name} style={{ fontSize: size }}>
-					<GlitchText label="WILLIAMS" />
+					{size && <GlitchText label="WILLIAMS" />}
 					<motion.span
 						drag
 						className={DashboardCSS.period}
+						whileDrag={{ scale: 1.2 }}
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
-						transition={{ delay: 1.5 }}
+						transition={{ opacity: { delay: 1.3 } }}
 					>
 						.
 					</motion.span>
 				</h1>
 			</div>
 
+			{/* SKILLS */}
+			{/* <Link to="/skills"> */}
 			<GridItem
 				className={`${DashboardCSS.grid_skills}`}
+				title="/skills"
+				page={<Skills />}
 				expandable
-				expanded={false}
-				fadeInDelay={1}
-				xStart={mobileScreenSize.matches ? 100 : 0}
-				yStart={mobileScreenSize.matches ? 0 : -100}
-			>
-				<Skills className={DashboardCSS.content} />
-			</GridItem>
+				gridRef={gridWrapper}
+				fadeInDelay={0.65}
+			></GridItem>
+			{/* </Link> */}
+			{/* </div> */}
 
+			{/* ABOUT */}
 			<GridItem
 				className={`${DashboardCSS.grid_about}`}
+				title="/about"
+				page={<About />}
 				expandable
-				expanded={false}
-				fadeInDelay={1.4}
-				xStart={portraitScreenSize.matches ? -100 : 100}
-				yStart={0}
+				fadeInDelay={0.75}
 			>
-				<About />
+				<motion.img
+					className={`${DashboardCSS.grid_item_icon} ${DashboardCSS.about_icon}`}
+					src={profile}
+					alt="About icon"
+					style={{
+						position: "absolute",
+						top: "20%",
+						left: "35px",
+						transformOrigin: "bottom left",
+					}}
+					initial={{ rotate: 180 }}
+					animate={{ rotate: 0 }}
+					transition={{ type: "spring", duration: 2, delay: 0.75 }}
+				/>
+				{/* </div> */}
 			</GridItem>
 
+			{/* CERTIFICATIONS */}
 			<GridItem
 				className={`${DashboardCSS.grid_certs}`}
+				title="/certs"
+				page={<Certs />}
 				expandable
-				expanded={false}
-				fadeInDelay={2.2}
-				xStart={portraitScreenSize.matches ? 100 : -100}
-				yStart={0}
+				fadeInDelay={0.95}
 			>
-				<Certs />
+				<motion.img
+					className={`${DashboardCSS.grid_item_icon} ${DashboardCSS.certs_icon}`}
+					src={ribbon}
+					alt="Certifications icon"
+					style={{
+						position: "absolute",
+						top: "-15%",
+						left: "25%",
+						scale: 0.7,
+					}}
+					initial={{ y: "-100%" }}
+					animate={{ y: "-10%" }}
+					transition={{ type: "spring", duration: 2, delay: 1.5 }}
+				/>
 			</GridItem>
 
+			{/* PROJECTS */}
 			<GridItem
 				className={`${DashboardCSS.grid_projects}`}
+				title="/projects"
+				page={<Projects />}
 				expandable
-				expanded={false}
-				fadeInDelay={1.8}
-				xStart={0}
-				yStart={100}
+				fadeInDelay={0.85}
 			>
-				<Projects />
+				<motion.img
+					className={`${DashboardCSS.grid_item_icon} ${DashboardCSS.projects_icon}`}
+					src={projects}
+					alt="Projects icon"
+					style={{
+						position: "absolute",
+						bottom: "-30%",
+						left: "12%",
+						scale: 0.8,
+					}}
+					initial={{ y: "100%" }}
+					animate={{ y: "-10%" }}
+					transition={{ type: "spring", duration: 2, delay: 1.25 }}
+				/>
 			</GridItem>
+			{/* <Routes>
+				<Route path="/skills" element={<Skills />} />
+				<Route path="/about" element={<About />} />
+				<Route path="/certs" element={<Certs />} />
+				<Route path="/projects" element={<Projects />} />
+			</Routes> */}
 
+			{/* SOCIAL LINKS */}
 			<GridItem
 				className={`${DashboardCSS.grid_link} ${DashboardCSS.grid_git}`}
-				fadeInDelay={2.6}
-				xStart={0}
-				yStart={100}
+				fadeInDelay={1.05}
 			>
 				<a href="https://github.com/Qwilliams815" target="_blank">
 					<img src={githubLogo} alt="github icon" />
 				</a>
 			</GridItem>
-
 			<GridItem
 				className={`${DashboardCSS.grid_link} ${DashboardCSS.grid_res}`}
-				fadeInDelay={3}
-				xStart={0}
-				yStart={100}
+				fadeInDelay={1.15}
 			>
 				<a href={resume} target="_blank">
 					<img src={resumeLogo} alt="resume icon" />
 				</a>
 			</GridItem>
-
 			<GridItem
 				className={`${DashboardCSS.grid_link} ${DashboardCSS.grid_linked}`}
-				fadeInDelay={3.4}
-				xStart={0}
-				yStart={100}
+				fadeInDelay={1.25}
 			>
 				<a href="https://www.linkedin.com/in/brian-williams-807832189/" target="_blank">
 					<img src={linkedinLogo} alt="linkedIn icon" />
 				</a>
 			</GridItem>
-		</div>
+		</motion.div>
 	);
-}
+};
+
+export default Dashboard;

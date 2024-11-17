@@ -25,7 +25,7 @@
 }
 
 .row > img {
-	width: 140px;
+	width: 120px;
 	height: auto;
 	margin: 20px;
 	filter: drop-shadow(var(--drop-shadow));
