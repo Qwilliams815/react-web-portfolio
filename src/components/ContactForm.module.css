@@ -65,7 +65,7 @@
 	font-family: var(--accent-font-family);
 	font-size: 55px;
 	font-weight: 700;
-	color: var(--primary-color);
+	color: var(--static-white);
 	cursor: pointer;
 	letter-spacing: 2px;
 }

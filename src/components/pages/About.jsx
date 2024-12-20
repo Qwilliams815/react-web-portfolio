@@ -27,7 +27,8 @@ export default function About() {
 					<p>
 						<span>
 							I'm a nut butter media producer turned AV technician specialist turned web
-							developer. It’s been a long, rather unconventional road, but I'm thrilled to be expanding my horizons!
+							developer. It’s been a long, rather unconventional road, but I'm thrilled to be
+							expanding my horizons!
 						</span>
 					</p>
 				</div>

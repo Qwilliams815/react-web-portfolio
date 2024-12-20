@@ -14,6 +14,7 @@ export default function GridItem(props) {
 	const [type, setType] = useState(null);
 	const gridItemRef = useRef(null);
 	const modalRef = useRef(null);
+	const mobileScreenSize = window.matchMedia("(max-width: 400px)");
 
 	// Framer Motion Settings
 	const variants = {
@@ -53,6 +54,7 @@ export default function GridItem(props) {
 
 	const launchModal = () => {
 		if (!modalRef.current) return;
+		window.scrollTo(0, 0);
 
 		if (props.expandable) {
 			// setExpanded(true);
@@ -93,6 +95,9 @@ export default function GridItem(props) {
 						onMouseUp={closeModal}
 					/>
 					{page}
+					{mobileScreenSize.matches && (
+						<div className={GridItemCSS.mobile_modal_footer}></div>
+					)}
 				</motion.div>
 			</motion.div>
 
@@ -114,8 +119,8 @@ export default function GridItem(props) {
 				animate={"animate"}
 				onAnimationComplete={(e) => resetDelay(e)}
 			>
-				{expandable && (
-					<div style={{ padding: "1rem" }}>
+				{(expandable || mobileScreenSize.matches) && (
+					<div className={GridItemCSS.title_container}>
 						<span>
 							<h2 className={GridItemCSS.title}>{title}</h2>
 						</span>
@@ -127,7 +132,7 @@ export default function GridItem(props) {
 					animate={{ top: isHovered ? 0 : "110%" }}
 					transition={{ duration: 0.3, ease: "easeInOut" }}
 				></motion.div>
-				{children}
+				<div className={GridItemCSS.icon_container}>{children}</div>
 			</motion.div>
 		</>
 	);

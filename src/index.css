@@ -1,16 +1,46 @@
 :root {
+	/* Dynamic Colors */
 	--primary-color: #fbfcff;
 	--secondary-color: #040d10;
 	--tertiary-color: #3f3f3f;
+	/* --tile-border: rgba(0, 0, 0, 0.28); */
 	--accent-color: #dc0000;
 	--box-shadow: 5px 5px 1rem rgb(72, 72, 72, 0.5);
 	--drop-shadow: 3px 3px 4px var(--secondary-color);
+	--tile-grid-border-color: rgba(4, 13, 16, 0.2);
+	--mobile-tile-grid-border-color: rgba(0, 0, 0, 0.089);
+	--tile-color: var(--primary-color);
+	--filter-value: invert(0);
+	--project-card-title-color: var(--primary-color);
+	--about-text-highlight-color: rgba(255, 255, 255, 0.7);
+
+	/* Static Colors */
+	--static-black: #040d10;
+	--static-white: #fbfcff;
 
 	--main-font-family: "Fira Code";
 	--accent-font-family: "Viga";
 
 	font-family: var(--main-font-family);
 	color: var(--secondary-color);
+	transition: all 0.3s ease-in-out;
+}
+
+.dark {
+	--primary-color: #040d10;
+	--secondary-color: #fbfcff;
+	--tertiary-color: #3f3f3f;
+	--accent-color: #dc0000;
+	--box-shadow: 5px 5px 1rem rgb(72, 72, 72, 0.5);
+	--tile-color: #1b1b1b;
+	--filter-value: invert(1);
+	/* --drop-shadow: 3px 3px 4px var(--secondary-color); */
+
+	--tile-grid-border-color: rgba(251, 252, 255, 0.2);
+	--mobile-tile-grid-border-color: rgba(255, 255, 255, 0.029);
+	--project-card-title-color: var(--tertiary-color);
+	transition: all 0.3s ease-in-out;
+	--about-text-highlight-color: rgba(255, 255, 255, 0);
 }
 
 * {

@@ -6,6 +6,8 @@
 	margin: 7rem 2rem 9rem 2rem;
 	background: var(--primary-color);
 	box-shadow: 3px 3px 25px rgba(0, 0, 0, 0.3);
+
+	/* z-index: 0; */
 }
 
 .card_thumbnail {
@@ -14,6 +16,8 @@
 	top: 0;
 	width: 40%;
 	background: var(--accent-color);
+
+	z-index: 1;
 }
 
 .card_thumbnail > img {
@@ -29,18 +33,20 @@
 	position: relative;
 	width: 60%;
 	padding: 20px;
+	border: solid var(--static-white);
 }
 
 .title_container {
 	position: absolute;
-	right: 0;
+	right: -3px;
 	top: -60px;
 	z-index: -1;
 	height: 100px;
 	padding: 7px 30px;
-	background: var(--primary-color);
+	background: var(--project-card-title-color);
 	filter: drop-shadow(3px -3px 10px rgba(0, 0, 0, 0.2));
 	white-space: nowrap;
+	border: solid var(--static-white);
 }
 
 .desc_wrapper {
@@ -66,7 +72,7 @@
 	background: var(--accent-color);
 	font-family: var(--primary-font-family), monospace;
 	text-decoration: none;
-	color: var(--primary-color);
+	color: var(--static-white);
 	float: right;
 	cursor: pointer;
 }
@@ -87,9 +93,6 @@
 }
 
 /* This rule is used in Projects.jsx */
-.spacer {
-	height: 1px;
-}
 
 @media (orientation: portrait) {
 	.card_container {
@@ -106,12 +109,13 @@
 
 	.card_thumbnail > img {
 		position: static;
-		border: solid 5px black;
+		/* border: solid 5px black; */
 	}
 
 	.card_content {
 		padding: 0;
 		width: 100%;
+		border-top: none;
 	}
 
 	.title_container {
@@ -122,7 +126,9 @@
 		height: auto;
 		white-space: wrap;
 		background: none;
+		border: none;
 		border-bottom: solid var(--accent-color) 5px;
+		font-size: clamp(10px, 2.5vw, 1rem);
 	}
 
 	.card_content > h1 {

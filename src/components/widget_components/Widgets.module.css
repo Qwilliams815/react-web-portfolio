@@ -64,7 +64,7 @@
 	top: 0;
 	width: 30px;
 	height: 30px;
-	border: solid 3px;
+	border: solid var(--static-black) 3px;
 	border-radius: 50%;
 	background: var(--accent-color);
 	offset-path: path(

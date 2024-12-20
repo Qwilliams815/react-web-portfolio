@@ -6,6 +6,7 @@ import ContactForm from "../ContactForm";
 export default function Contact() {
 	const [open, setOpen] = useState(false);
 	const btnRef = useRef(null);
+	const mobileScreenSize = window.matchMedia("(max-width: 400px)");
 
 	const handleClose = () => {
 		setOpen(!open);
@@ -22,7 +23,7 @@ export default function Contact() {
 			transition={{ type: "spring", stiffness: 40, duration: 0.5 }}
 			initial={{ y: "103%" }}
 			animate={{
-				y: open ? "-15px" : "103%",
+				y: open ? (mobileScreenSize.matches ? "0px" : "-15px") : "103%",
 			}}
 			whileHover={open ? "" : { y: "101%" }}
 			ref={btnRef}

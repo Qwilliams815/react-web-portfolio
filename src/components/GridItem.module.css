@@ -31,6 +31,14 @@
 	display: none;
 }
 
+.icon_container {
+	/* position: absolute; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 75%;
+}
+
 .modal {
 	height: 100%;
 	width: 100%;
@@ -47,6 +55,12 @@
 	position: relative;
 }
 
+/* This is used to add a little space buffer for safari's mobile "search chin" UI
+That little feature does not play nice with vh units */
+.mobile_modal_footer {
+	height: 200px;
+}
+
 .show_modal {
 	display: block;
 }
@@ -59,6 +73,7 @@
 	margin: 20px;
 	float: right;
 	cursor: pointer;
+	filter: var(--filter-value);
 }
 
 .background {
@@ -71,13 +86,17 @@
 
 /* THIS STYLE IS IMPORTED AND USED IN EACH GRID ITEM PAGE COMPONENT */
 .content_padding {
-	height: 100%;
 	padding: 1rem;
 	box-sizing: border-box;
 }
 
 .content_padding > h2 {
 	pointer-events: none;
+}
+
+.title_container {
+	padding: 1rem;
+	color: var(--static-black);
 }
 
 @media (orientation: portrait) {
@@ -112,14 +131,29 @@
 	@media only screen and (max-width: 400px) {
 		.grid_item {
 			display: flex;
-			justify-content: center;
+			flex-direction: column;
 			backdrop-filter: none;
+			box-shadow: 0px 4px 3px rgba(144, 144, 144, 0.5);
+		}
+
+		.title_container {
+			background: black;
+			/* padding: 0.4rem; */
+			padding: 1vw;
+			/* padding: 0; */
+			height: 25%;
+			display: flex;
+			align-items: center;
 		}
 
 		.title {
 			margin-bottom: 0;
-			margin-left: 33%;
-			font-size: clamp(1rem, 8vw, 2rem);
+			/* margin-left: 33%; */
+			/* font-size: clamp(1rem, 8vw, 2rem); */
+			color: white;
+			font-size: clamp(0.5rem, 5vw, 1rem);
+			font-weight: 100;
+			margin-left: 4px;
 		}
 
 		.modal_wrapper {
@@ -127,7 +161,8 @@
 		}
 
 		.modal {
-			padding: 2.25rem;
+			padding: 1rem;
+			padding-top: 2.5rem;
 			height: inherit;
 			position: absolute;
 			top: 0;
@@ -136,13 +171,6 @@
 
 		.content_padding > h2 {
 			font-size: 2rem;
-		}
-	}
-
-	@media only screen and (max-width: 400px) {
-		.modal {
-			padding: 1rem;
-			padding-top: 2.5rem;
 		}
 	}
 }

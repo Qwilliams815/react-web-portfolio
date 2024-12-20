@@ -48,7 +48,7 @@ export default function ContactForm(props) {
 				name="user_name"
 				placeholder="/name"
 				required
-				whileFocus={{ boxShadow: "-7px 7px var(--secondary-color)", x: 7, y: -7 }}
+				whileFocus={{ boxShadow: "-7px 7px var(--static-black)", x: 7, y: -7 }}
 				transition={{ type: "easeOut", duration: 0.2, stiffness: 100 }}
 				tabIndex={isOpen ? "0" : "-1"}
 			/>
@@ -57,7 +57,7 @@ export default function ContactForm(props) {
 				name="user_email"
 				placeholder="/email"
 				required
-				whileFocus={{ boxShadow: "-7px 7px var(--secondary-color)", x: 7, y: -7 }}
+				whileFocus={{ boxShadow: "-7px 7px var(--static-black)", x: 7, y: -7 }}
 				transition={{ type: "easeOut", duration: 0.2, stiffness: 100 }}
 				tabIndex={isOpen ? "0" : "-1"}
 			/>
@@ -72,7 +72,7 @@ export default function ContactForm(props) {
 				name="message"
 				placeholder="/message"
 				required
-				whileFocus={{ boxShadow: "-7px 7px var(--secondary-color)", x: 7, y: -7 }}
+				whileFocus={{ boxShadow: "-7px 7px var(--static-black)", x: 7, y: -7 }}
 				transition={{ type: "easeOut", duration: 0.2, stiffness: 100 }}
 				tabIndex={isOpen ? "0" : "-1"}
 			/>

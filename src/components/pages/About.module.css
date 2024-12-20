@@ -10,6 +10,7 @@
 
 .text_chunk > p > span {
 	background-color: rgba(255, 255, 255, 0.7);
+	background: var(--about-text-highlight-color);
 }
 
 .text_and_image {
@@ -48,6 +49,7 @@
 	right: 1rem !important;
 	bottom: 1rem;
 	display: none;
+	filter: var(--filter-value);
 }
 
 @media (orientation: portrait) {

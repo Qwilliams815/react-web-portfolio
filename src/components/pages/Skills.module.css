@@ -28,7 +28,9 @@
 	width: 120px;
 	height: auto;
 	margin: 20px;
-	filter: drop-shadow(var(--drop-shadow));
+	/* filter: drop-shadow(var(--drop-shadow)); */
+	--drop-shadow: 3px 3px 4px var(--static-black);
+	filter: drop-shadow(0px 0px 15px rgb(48, 48, 48));
 	object-fit: contain;
 }
 
@@ -41,6 +43,7 @@
 	background: white;
 	transform: translate(-50%, -115%);
 	pointer-events: none;
+	color: var(--static-black);
 }
 
 @media only screen and (max-width: 839px) {

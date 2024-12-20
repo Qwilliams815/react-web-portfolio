@@ -6,6 +6,7 @@ import profile from "./profile.svg";
 import projects from "./projects.svg";
 import ribbon from "./ribbon.svg";
 import scrollToTop from "./scroll-to-top.svg";
+import certsWithCheck from "./certs_with_check.svg";
 
 export {
 	githubLogo,
@@ -16,4 +17,5 @@ export {
 	profile,
 	projects,
 	scrollToTop,
+	certsWithCheck,
 };

@@ -11,7 +11,7 @@ export default function Projects(props) {
 	const { isOpen } = props;
 	const projects = [
 		{
-			title: "Chrome Extension",
+			title: "Chrome_Extension",
 			desc:
 				"A Chrome extension compilation of 6 togglable popup widgets, each with their own unique ability to read/manipulate the current webpage DOM. ",
 			project_img: ChromeExtImg,
@@ -20,7 +20,7 @@ export default function Projects(props) {
 			tags: ["chrome", "extension"],
 		},
 		{
-			title: ".exe Boot Tool",
+			title: "Boot_Tool.exe",
 			desc:
 				'GUI window allowing you to save and load multiple .exe files to custom profiles. For example; loading Discord, OBS, and Steam might be saved to a "Gaming" profile.',
 			project_img: BootToolImg,
@@ -28,7 +28,7 @@ export default function Projects(props) {
 			demo_url: "https://youtu.be/AOWQlXB-Dk8",
 		},
 		{
-			title: "JavaScript PWA",
+			title: "JavaScript_PWA",
 			desc:
 				"Simple score keeping webapp featuring name, settings, and color customization.",
 			project_img: ScoreKeeperImg,
@@ -56,7 +56,7 @@ export default function Projects(props) {
 					);
 				})}
 
-				<div className={ProjectCardCSS.spacer}></div>
+				{/* <div className={ProjectCardCSS.spacer}></div> */}
 			</div>
 		</>
 	);

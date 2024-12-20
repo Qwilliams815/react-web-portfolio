@@ -4,6 +4,7 @@ import Dashboard from "./components/Dashboard";
 import Contact from "/src/components/pages/Contact";
 
 function App() {
+	
 	return (
 		<>
 			<div className="border"></div>
