@@ -1,10 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-// import { ThemeContext } from "../ThemeContext";
+import React, { useEffect, useState } from "react";
 import DarkModeSwitchCSS from "./DarkModeSwitch.module.css";
 
 const DarkModeSwitch = () => {
-	// const { theme, toggleTheme } = useContext(ThemeContext);
-
 	const [theme, setTheme] = useState("light");
 
 	const toggleTheme = () => {
@@ -40,28 +37,12 @@ const DarkModeSwitch = () => {
 				setThemeLight();
 			}
 		}
-		console.log(storedTheme);
 	}, []);
-
-	// useEffect(() => {
-	// 	// Get the root element
-	// 	const root = document.documentElement;
-
-	// 	// Set the CSS variable
-	// 	root.style.setProperty("--primary-color", "blue");
-	// }, []);
 
 	return (
 		<div className={DarkModeSwitchCSS.container}>
 			<label className={DarkModeSwitchCSS.switch}>
-				<input
-					type="checkbox"
-					checked={theme === "light"}
-					onChange={toggleTheme}
-					defaultChecked={storedTheme === "light"}
-					// className={DarkModeSwitchCSS.input}
-					// id={"darkMode"}
-				/>
+				<input type="checkbox" checked={theme === "light"} onChange={toggleTheme} />
 				<span className={DarkModeSwitchCSS.slider}>
 					<span className={DarkModeSwitchCSS.circle}></span>
 				</span>
